@@ -25,4 +25,11 @@ TEST(qsort,first)
 	}
 	ob.qSortI(mass,N);
 	EXPECT_TRUE(proverka(mass));
+	system("pause");
+}
+
+int main(int argc, char **argv) {
+	setlocale(0,"");
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
