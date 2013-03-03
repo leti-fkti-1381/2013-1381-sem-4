@@ -231,3 +231,78 @@ bool equalPairVectors( std::vector<Pair>& a, std::vector<Pair>& b)
 			return false;
 	return true;
 }
+
+void findQuick( std::vector<Bolt> bolts, std::vector<Nut> nuts, std::vector<Pair>& result, unsigned int& cmp )
+{
+	// Сначала берем первую гайку и делим все болты на меньшие ее и большие ее.
+	std::vector<Bolt> upperBolts;
+	std::vector<Bolt> lowerBolts;
+	// Это будет болт соответствующих гайке
+	Bolt foundBolt;
+	Nut firstNut = nuts[0];
+	// Заодно сразу уберем эту первую гайку из списка всех гаек, чтобы затем
+	// не пришлось сравнивать с ней найденный болт еще раз (при разделении
+	// гаек по болту).
+	nuts.erase(nuts.begin());
+	
+	// Можно также уменьшить количество сравнений путем проверки длины списка
+	// болтов. Если в списке один болт, то он точно будет соответствовать,
+	// единственной гайке из списка гаек. Хотя, впрочем, нет, не будем так
+	// делать, потому что это добавит лишние проверки длины списка на каждом
+	// рекурсивном вызове функции.
+
+	for (std::vector<Bolt>::iterator bolt = bolts.begin(); bolt != bolts.end(); ++bolt)
+	{
+		// Если болт больше гайки, то помещаем его в upperBolts
+		if ((*bolt).size > firstNut.size)
+		{
+			cmp += 1;
+			upperBolts.push_back(*bolt);
+			continue;
+		}
+		// Иначе если болт меньше, помещаем его в lowerBolts
+		else if ((*bolt).size < firstNut.size)
+		{
+			cmp += 2;
+			lowerBolts.push_back(*bolt);
+			continue;
+		}
+		// Иначе, мы нашли соответствующий болт, и эту пару нужно сохранить
+		else
+		{
+			cmp += 2;
+			foundBolt.size = (*bolt).size;
+			Pair pair;
+			pair.nut.size = firstNut.size;
+			pair.bolt.size = (*bolt).size;
+			result.push_back(pair);
+		}
+	}
+	
+	// Теперь нужно аналогичным образом разделить все гайки по найденному болту
+	std::vector<Nut> upperNuts;
+	std::vector<Nut> lowerNuts;
+	for (std::vector<Nut>::iterator nut = nuts.begin(); nut != nuts.end(); ++nut)
+	{
+		if ((*nut).size > foundBolt.size)
+		{
+			cmp += 1;
+			upperNuts.push_back(*nut);
+			continue;
+		}
+		else if ((*nut).size < foundBolt.size)
+		{
+			cmp += 2;
+			lowerNuts.push_back(*nut);
+			continue;
+		}
+	}
+	
+	// Теперь, если размеры upperBolts и lowerBolts не равны нулю,
+	// запускаем функцию для них.
+	if (upperBolts.size() > 0)
+		findQuick(upperBolts, upperNuts, result, cmp);
+	// То же делаем и с lowerBolts и lowerNuts
+	if (lowerBolts.size() > 0)
+		findQuick(lowerBolts, lowerNuts, result, cmp);
+}

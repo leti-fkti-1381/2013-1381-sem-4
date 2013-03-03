@@ -14,9 +14,9 @@ int main()
 	bool viewResult = false;
 	
 	// Количество элементов
-	int count = 1000;
+	int count = 100000;
 	// Количество циклов прогонки теста.
-	int cycles = 10;
+	int cycles = 2;
 	// Создаем списки болтов и гаек
 	std::vector<Bolt> bolts;
 	std::vector<Nut> nuts;
@@ -68,6 +68,30 @@ int main()
 		totalCmpCount += cmp;
 	}
 	std::cout << "  Mean value of compares (tree): " << (totalCmpCount / cycles) << std::endl;
+	
+	//==========================================================================
+	// Сравнение быстрой сортировкой
+	
+	totalCmpCount = 0;
+	for (int i = 0; i < cycles; ++i)
+	{
+		unsigned int cmp = 0;
+		std::random_shuffle ( bolts.begin(), bolts.end() );
+		std::random_shuffle ( nuts.begin(), nuts.end() );
+		std::vector<Pair> pairs;
+		findQuick(bolts, nuts, pairs, cmp);
+		
+		if (viewResult && i == 0)
+		{
+			std::cout << "pairs:";
+			for (std::vector<Pair>::iterator it = pairs.begin(); it != pairs.end(); ++it)
+				std::cout << ' ' << (*it).bolt.size << "|" << (*it).nut.size;
+			std::cout << std::endl;
+		}
+		
+		totalCmpCount += cmp;
+	}
+	std::cout << " Mean value of compares (quick): " << (totalCmpCount / cycles) << std::endl;
 	
 	return 0;
 }
