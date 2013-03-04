@@ -76,13 +76,4 @@ std::vector<Pair> findTree( std::vector<Bolt> bolts, std::vector<Nut> nuts, unsi
  */
 bool equalPairVectors( std::vector<Pair>& a, std::vector<Pair>& b);
 
-/**
- * Функция нахождения пар болтов и гаек. Рекурсивная. Аналог быстрой сортировки.
- * @param	bolts	список болтов
- * @param	nuts	список гаек
- * @param	result	список найденных пар
- * @param	cmp		счетчик сравнений
- */
-void findQuick( std::vector<Bolt> bolts, std::vector<Nut> nuts, std::vector<Pair>& result, unsigned int& cmp );
-
 #endif /* _BOLTNUT_HPP */
