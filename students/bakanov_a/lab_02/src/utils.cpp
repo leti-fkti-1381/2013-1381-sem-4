@@ -22,30 +22,84 @@ bool checkSolution (int** field)
 	{
 		return false;
 	}
+}
 
-	/**
-	 * Далее следует старый вариант проверки. Он вроде как был расчитан
-	 * на отвязку от конкретного размера поля 4x4. Но я пришел к выводу,
-	 * что проверка в лоб в учебных целях будет целесообразней.
-	 *
-	// Проще сначала проверять последний элемент на соответствие нулю
-	if (field[SIZE - 1][SIZE - 1] != 0)
-		return false;
-	// Если же чуда не случилось, будем проверять подряд.
+int findField( std::vector< FieldDescription >& fields, FieldDescription& fd )
+{
+	std::vector<FieldDescription>::iterator it = fields.begin();
+	bool found = false;
+	int ind;
+	for (ind = 0; it != fields.end(); ++it, ++ind)
+	{
+		// Проверяем очередное поле
+		if (fd.cameFrom != (*it).cameFrom)
+			continue;
+		else if (fd.field[0][0] != (*it).field[0][0]) continue;
+		else if (fd.field[0][1] != (*it).field[0][1]) continue;
+		else if (fd.field[0][2] != (*it).field[0][2]) continue;
+		else if (fd.field[0][3] != (*it).field[0][3]) continue;
+		else if (fd.field[1][0] != (*it).field[1][0]) continue;
+		else if (fd.field[1][1] != (*it).field[1][1]) continue;
+		else if (fd.field[1][2] != (*it).field[1][2]) continue;
+		else if (fd.field[1][3] != (*it).field[1][3]) continue;
+		else if (fd.field[2][0] != (*it).field[2][0]) continue;
+		else if (fd.field[2][1] != (*it).field[2][1]) continue;
+		else if (fd.field[2][2] != (*it).field[2][2]) continue;
+		else if (fd.field[2][3] != (*it).field[2][3]) continue;
+		else if (fd.field[3][0] != (*it).field[3][0]) continue;
+		else if (fd.field[3][1] != (*it).field[3][1]) continue;
+		else if (fd.field[3][2] != (*it).field[3][2]) continue;
+		else if (fd.field[3][3] != (*it).field[3][3]) continue;
+		
+		// Если нашли совпадающую структуру, то отмечаем это и завершаем цикл
+		found = true;
+		break;
+	}
+	return found ? ind : -1;
+}
+
+bool addField( std::vector< FieldDescription >& fields, int** field, char cameFrom )
+{
+	// Сохраним текущее состояние поле в векторе.
+	// первым элементом вектора будет направление прихода.
+	FieldDescription fd;
+	fd.cameFrom = cameFrom;
 	for (int i = 0; i < SIZE; ++i)
 		for (int j = 0; j < SIZE; ++j)
-		{
-			// Проверка последнего элемента. Он должен быть равен нулю.
-			if (i == SIZE - 1 && j == SIZE - 1)
-				return field[i][j] == 0;
-			// Проверка прочих элементов. То есть если все хорошо, то данное
-			// условие всегда будет не выполняться, и в конце концов выполнится
-			// предыдущее условие, которое вернет результат сравнения последнего
-			// элемента с нулем (а не с 16).
-			if ( field[i][j] != i * SIZE + j + 1 )
-				return false;
-		}
-	*/
+			fd.field[i][j] = field[i][j];
+	// Попробуем добавить его в хранилище
+	int ind = findField( fields, fd );
+	bool added = false;
+	if (ind < 0)
+	{
+		fields.push_back( fd );
+		added = true;
+	}
+	
+	// Раскомментировав следующие две строки, можно увидеть что механизм
+	// отсечения повторных ветвей работает.
+	//if (!added)
+	//	std::cout << "< FIELD ALREADY EXIST >\n";
+	
+	return added;
+}
+
+void removeField( std::vector< FieldDescription >& fields, int** field, char cameFrom )
+{
+	// Сохраним текущее состояние поле в векторе.
+	// первым элементом вектора будет направление прихода.
+	FieldDescription fd;
+	fd.cameFrom = cameFrom;
+	for (int i = 0; i < SIZE; ++i)
+		for (int j = 0; j < SIZE; ++j)
+			fd.field[i][j] = field[i][j];
+	// Попробуем удалить его из хранилища
+	// Функция erase возвращает size_type, который равен количеству удаленных
+	// элементов. Мы его не проверяем, так как можем быть уверены, что удаляем
+	// только то, что добавили.
+	int ind = findField( fields, fd );
+	if (ind >= 0)
+		fields.erase( fields.begin() + ind );
 }
 
 void printField (int** field)
@@ -121,7 +175,22 @@ void printSequence (int** field, int cx, int cy, std::stack<char> way)
 	std::cout << std::endl;
 }
 
-void solve (int** field, int cx, int cy, char cameFrom, int& depth, std::stack<char>& way, bool& solved)
+#define COUT_TRY_ADD_FIELD std::cout << "--- Try add field, depth = " << depth << " ---------------------------------\n"; printField( field );
+#define COUT_FIELD_WAS_ADDED std::cout << "--- Field was added, size = " << fields.size() << ", depth = " << depth << std::endl;
+#define COUT_TRY_REMOVE_FIELD std::cout << "--- Try remove field, depth = " << depth << " ---------------------------------\n"; printField( field );
+#define COUT_FIELD_ALREADY_EXIST std::cout << "--- Field already exist in list, size = " << fields.size() << ", depth = " << depth << std::endl;
+#define COUT_UP std::cout << "< UP >" << std::endl;
+#define COUT_DOWN std::cout << "< DOWN >" << std::endl;
+#define COUT_LEFT std::cout << "< LEFT >" << std::endl;
+#define COUT_RIGHT std::cout << "< RIGHT >" << std::endl;
+#define COUT_CURRENT_STATE std::cout << "--- Current state ---" << std::endl; printField( field );
+#define COUT_CANT_GO_DOWN std::cout << "< CAN'T GO DOWN >\n";
+#define COUT_CANT_GO_RIGHT std::cout << "< CAN'T GO RIGHT >\n";
+#define COUT_CANT_GO_UP std::cout << "< CAN'T GO UP >\n";
+#define COUT_CANT_GO_LEFT std::cout << "< CAN'T GO LEFT >\n";
+
+void solve (int** field, int cx, int cy, char cameFrom, int& depth,
+	std::stack<char>& way, bool& solved, std::vector< FieldDescription >& fields)
 {
 	// Проверяем состояние поля. Если задача решена, устанавливаем solved в true
 	// и выходим.
@@ -138,91 +207,197 @@ void solve (int** field, int cx, int cy, char cameFrom, int& depth, std::stack<c
 	if (depth < RECURSIVE_DEPTH)
 	{
 		// Смещаем вниз, если это возможно. Проверять следует направление, откуда
-		// мы пришли, и выход за границы поля.
+		// мы пришли, и выход за границы поля. Кроме этого 
 		if (cameFrom != DOWN && cy < SIZE - 1)
 		{
-			// Говорим такие: "Увеличим-ка глубину рекурсии"
+			// Увеличим глубину рекурсии
 			++depth;
 			// А теперь меняем местами фишки
 			swap( field, cx, cy, cx, cy + 1 );
-			// Запоминаем, что мы пошли вниз
-			way.push( DOWN );
-			// Рекурсия, такая рекурсия
-			solve( field, cx, cy + 1, UP, depth, way, solved );
-			// Теперь самое время проверить, найдено ли решение
-			if (solved)
+			
+			//COUT_DOWN
+			//COUT_TRY_ADD_FIELD
+			
+			// Здесь нужно проверить не попадали ли мы уже в такую позицию.
+			// если попадали, то исследовать эту ветку уже нет смысла
+			// и мы ее пропустим.
+			if (addField( fields, field, UP ))
 			{
-				// Этот swap вызывается исключительно в эстетических целях.
-				// То есть затем, чтобы после нахождения решения его можно было
-				// изобразить графически, а не только как последовательность
-				// букв 'U', 'D', 'L', 'R'.
+				//COUT_DOWN
+				//COUT_FIELD_WAS_ADDED
+				
+				// Запоминаем, что мы пошли вниз
+				way.push( DOWN );
+				// Рекурсия, такая рекурсия
+				solve( field, cx, cy + 1, UP, depth, way, solved, fields );
+				
+				//COUT_DOWN
+				//COUT_TRY_REMOVE_FIELD
+				
+				// После выхода из рекурсии меняем фишки обратно, и удаляем
+				// позицию из хранилища.
+				removeField( fields, field, UP );
 				swap( field, cx, cy, cx, cy + 1 );
-				return;
+				//COUT_CURRENT_STATE
+				
+				// Теперь самое время проверить, найдено ли решение
+				if (solved)
+				{
+					return;
+				}
+				// Если же решение не найдено, то возвращаем все как было
+				else
+				{
+					--depth;
+					way.pop();
+				}
 			}
-			// Если же решение не найдено, то возвращаем все как было
+			// Вот здесь, собственно, пропускаем ветку.
 			else
 			{
 				--depth;
+				//COUT_DOWN
+				//COUT_FIELD_ALREADY_EXIST
 				swap( field, cx, cy, cx, cy + 1 );
-				way.pop();
 			}
 		}
+		//else
+		//	COUT_CANT_GO_DOWN
 		// То же самое пробуем с правым направлением
 		if (cameFrom != RIGHT && cx < SIZE - 1)
 		{
 			++depth;
 			swap( field, cx, cy, cx + 1, cy );
-			way.push( RIGHT );
-			solve( field, cx + 1, cy, LEFT, depth, way, solved );
-			if (solved)
+			
+			//COUT_RIGHT
+			//COUT_TRY_ADD_FIELD
+			
+			if (addField( fields, field, LEFT ))
 			{
+				//COUT_RIGHT
+				//COUT_FIELD_WAS_ADDED
+				
+				way.push( RIGHT );
+				solve( field, cx + 1, cy, LEFT, depth, way, solved, fields );
+				
+				//COUT_RIGHT
+				//COUT_TRY_REMOVE_FIELD
+				
+				removeField( fields, field, LEFT );
 				swap( field, cx, cy, cx + 1, cy );
-				return;
+				//COUT_CURRENT_STATE
+				
+				if (solved)
+				{
+					return;
+				}
+				else
+				{
+					--depth;
+					way.pop();
+				}
 			}
 			else
 			{
 				--depth;
+				//COUT_RIGHT
+				//COUT_FIELD_ALREADY_EXIST
 				swap( field, cx, cy, cx + 1, cy );
-				way.pop();
 			}
 		}
+		//else
+		//	COUT_CANT_GO_RIGHT
 		// То же самое пробуем с верхним направлением
 		if (cameFrom != UP && cy > 0)
 		{
 			++depth;
 			swap( field, cx, cy, cx, cy - 1 );
-			way.push( UP );
-			solve( field, cx, cy - 1, DOWN, depth, way, solved );
-			if (solved)
+			
+			//COUT_UP
+			//COUT_TRY_ADD_FIELD
+			
+			if (addField( fields, field, DOWN ))
 			{
+				//COUT_UP
+				//COUT_FIELD_WAS_ADDED
+				
+				way.push( UP );
+				solve( field, cx, cy - 1, DOWN, depth, way, solved, fields );
+				
+				//COUT_UP
+				//COUT_TRY_REMOVE_FIELD
+				
+				removeField( fields, field, DOWN );
 				swap( field, cx, cy, cx, cy - 1 );
-				return;
+				//COUT_CURRENT_STATE
+				
+				if (solved)
+				{
+					return;
+				}
+				else
+				{
+					--depth;
+					way.pop();
+				}
 			}
 			else
 			{
 				--depth;
+				//COUT_UP
+				//COUT_FIELD_ALREADY_EXIST
 				swap( field, cx, cy, cx, cy - 1 );
-				way.pop();
 			}
 		}
+		//else
+		//	COUT_CANT_GO_UP
 		// То же самое пробуем с левым направлением
 		if (cameFrom != LEFT && cx > 0)
 		{
 			++depth;
 			swap( field, cx, cy, cx - 1, cy );
-			way.push( LEFT );
-			solve( field, cx - 1, cy, RIGHT, depth, way, solved );
-			if (solved)
+			
+			//COUT_LEFT
+			//COUT_TRY_ADD_FIELD
+			
+			if (addField( fields, field, RIGHT ))
 			{
+				//COUT_LEFT
+				//COUT_FIELD_WAS_ADDED
+				
+				way.push( LEFT );
+				solve( field, cx - 1, cy, RIGHT, depth, way, solved, fields );
+				
+				//COUT_LEFT
+				//COUT_TRY_REMOVE_FIELD
+				
+				removeField( fields, field, RIGHT );
 				swap( field, cx, cy, cx - 1, cy );
-				return;
+				//COUT_CURRENT_STATE
+				
+				if (solved)
+				{
+					return;
+				}
+				else
+				{
+					--depth;
+					way.pop();
+				}
 			}
 			else
 			{
 				--depth;
+				//COUT_LEFT
+				//COUT_FIELD_ALREADY_EXIST
 				swap( field, cx, cy, cx - 1, cy );
-				way.pop();
 			}
 		}
+		//else
+		//	COUT_CANT_GO_LEFT
 	}
+	//else
+	//{
+	//	std::cout << "<<< MAXIMUM DEPTH REACHED >>>\n";
+	//}
 }

@@ -7,6 +7,7 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <vector>
 
 // Размер игрового поля
 const int SIZE = 4;
@@ -16,13 +17,29 @@ const int SIZE = 4;
 // Во-первых будет большой вывод найденного решения, во-вторых, если запустить
 // программу с глубиной рекурсии 50, как указано в задании, то можно смело
 // пойти погулять, или там на концерт, или в оперу.
-const int RECURSIVE_DEPTH = 20;
+const int RECURSIVE_DEPTH = 50;
 // Константы для записи ходов
 const char UP = 'U';
 const char DOWN = 'D';
 const char LEFT = 'L';
 const char RIGHT = 'R';
 const char NOWHERE = 'N';
+
+struct FieldDescription
+{
+	char cameFrom;
+	int field[SIZE][SIZE];
+};
+
+// Функция проверки существования / добавления состояния поля в хранилище.
+bool addField( std::vector< FieldDescription >& fields, int** field, char cameFrom );
+// Функция удаления из хранилища текущего состояния поля
+void removeField( std::vector< FieldDescription >& fields, int** field, char cameFrom );
+/**
+ * @brief Функция поиска поля в списке.
+ * @return Индекс искомого поля или -1, если поле не найдено.
+ */
+int findField( std::vector< FieldDescription >& fields, FieldDescription& fd );
 
 /**
  * Функция меняет местами два значения на указанных координатах.
@@ -72,6 +89,7 @@ void printSequence (int** field, int cx, int cy, std::stack<char> way);
  * @param	way	Стек, содержащий решение
  * @param	solved	Флаг нахождения решения
  */
-void solve (int** field, int cx, int cy, char cameFrom, int& depth, std::stack<char>& way, bool& solved);
+void solve (int** field, int cx, int cy, char cameFrom, int& depth,
+	std::stack<char>& way, bool& solved, std::vector< FieldDescription >& fields);
 
 #endif /* _UTILS_HPP */
