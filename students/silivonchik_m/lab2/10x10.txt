@@ -1,0 +1,796 @@
+Все возможнные пути из [0][0] в [9][5]
+Заданный лабиринт:
+5000000060
+6060660660
+0000000606
+6006060066
+0600660060
+6600666600
+0060606066
+0060000600
+0600600006
+0060090666
+
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->right->down->down->down->right->right->right->down->down->left.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->right->down->down->down->right->right->right->down->left->down.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->right->down->down->down->right->right->down->right->down->left.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 22
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->right->down->down->down->right->right->down->down.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 22
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->right->down->down->down->down->down->right->right.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->down->right->down->down->right->right->right->down->down->left.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->down->right->down->down->right->right->right->down->left->down.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->down->right->down->down->right->right->down->right->down->left.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 22
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->down->right->down->down->right->right->down->down.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 22
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->down->down->down->right->down->down->down->down->right->right.
+Путь: 5111111060
+      6060661660
+      0011111606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 26
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->right->down->down->down->right->right->right->down->down->left.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 26
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->right->down->down->down->right->right->right->down->left->down.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 26
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->right->down->down->down->right->right->down->right->down->left.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->right->down->down->down->right->right->down->down.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->right->down->down->down->down->down->right->right.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 26
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->down->right->down->down->right->right->right->down->down->left.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 26
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->down->right->down->down->right->right->right->down->left->down.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 26
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->down->right->down->down->right->right->down->right->down->left.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->down->right->down->down->right->right->down->down.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 24
+Шаги: right->right->right->right->right->right->down->down->left->left->left->left->left->down->right->down->down->right->down->down->down->down->right->right.
+Путь: 5111111060
+      6060661660
+      0111111606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->down->down->right->down->down->down->right->right->right->down->down->left.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->down->down->right->down->down->down->right->right->right->down->left->down.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->down->down->right->down->down->down->right->right->down->right->down->left.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 16
+Шаги: right->right->right->down->down->left->down->down->right->down->down->down->right->right->down->down.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 16
+Шаги: right->right->right->down->down->left->down->down->right->down->down->down->down->down->right->right.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->down->down->down->right->down->down->right->right->right->down->down->left.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->down->down->down->right->down->down->right->right->right->down->left->down.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->down->down->down->right->down->down->right->right->down->right->down->left.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 16
+Шаги: right->right->right->down->down->left->down->down->down->right->down->down->right->right->down->down.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 16
+Шаги: right->right->right->down->down->left->down->down->down->right->down->down->down->down->right->right.
+Путь: 5111000060
+      6061660660
+      0011000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 20
+Шаги: right->right->right->down->down->left->left->down->right->down->right->down->down->down->right->right->right->down->down->left.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 20
+Шаги: right->right->right->down->down->left->left->down->right->down->right->down->down->down->right->right->right->down->left->down.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 20
+Шаги: right->right->right->down->down->left->left->down->right->down->right->down->down->down->right->right->down->right->down->left.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->left->down->right->down->right->down->down->down->right->right->down->down.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->left->down->right->down->right->down->down->down->down->down->right->right.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 20
+Шаги: right->right->right->down->down->left->left->down->right->down->down->right->down->down->right->right->right->down->down->left.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 20
+Шаги: right->right->right->down->down->left->left->down->right->down->down->right->down->down->right->right->right->down->left->down.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 20
+Шаги: right->right->right->down->down->left->left->down->right->down->down->right->down->down->right->right->down->right->down->left.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->left->down->right->down->down->right->down->down->right->right->down->down.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 18
+Шаги: right->right->right->down->down->left->left->down->right->down->down->right->down->down->down->down->right->right.
+Путь: 5111000060
+      6061660660
+      0111000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 16
+Шаги: right->down->down->right->down->down->right->down->down->down->right->right->right->down->down->left.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 16
+Шаги: right->down->down->right->down->down->right->down->down->down->right->right->right->down->left->down.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 16
+Шаги: right->down->down->right->down->down->right->down->down->down->right->right->down->right->down->left.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 14
+Шаги: right->down->down->right->down->down->right->down->down->down->right->right->down->down.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 14
+Шаги: right->down->down->right->down->down->right->down->down->down->down->down->right->right.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0611660060
+      6601666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 16
+Шаги: right->down->down->right->down->down->down->right->down->down->right->right->right->down->down->left.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 16
+Шаги: right->down->down->right->down->down->down->right->down->down->right->right->right->down->left->down.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 16
+Шаги: right->down->down->right->down->down->down->right->down->down->right->right->down->right->down->left.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 14
+Шаги: right->down->down->right->down->down->down->right->down->down->right->right->down->down.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 14
+Шаги: right->down->down->right->down->down->down->right->down->down->down->down->right->right.
+Путь: 5100000060
+      6160660660
+      0110000606
+      6016060066
+      0610660060
+      6611666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 16
+Шаги: right->down->down->down->right->down->right->down->down->down->right->right->right->down->down->left.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 16
+Шаги: right->down->down->down->right->down->right->down->down->down->right->right->right->down->left->down.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 16
+Шаги: right->down->down->down->right->down->right->down->down->down->right->right->down->right->down->left.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 14
+Шаги: right->down->down->down->right->down->right->down->down->down->right->right->down->down.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 14
+Шаги: right->down->down->down->right->down->right->down->down->down->down->down->right->right.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0611660060
+      6601666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Количество шагов: 16
+Шаги: right->down->down->down->right->down->down->right->down->down->right->right->right->down->down->left.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600601006
+      0060091666
+      
+Количество шагов: 16
+Шаги: right->down->down->down->right->down->down->right->down->down->right->right->right->down->left->down.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061111600
+      0600611006
+      0060090666
+      
+Количество шагов: 16
+Шаги: right->down->down->down->right->down->down->right->down->down->right->right->down->right->down->left.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600611006
+      0060091666
+      
+Количество шагов: 14
+Шаги: right->down->down->down->right->down->down->right->down->down->right->right->down->down.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061110600
+      0600610006
+      0060090666
+      
+Количество шагов: 14
+Шаги: right->down->down->down->right->down->down->right->down->down->down->down->right->right.
+Путь: 5100000060
+      6160660660
+      0100000606
+      6116060066
+      0610660060
+      6611666600
+      0061606066
+      0061000600
+      0601600006
+      0061190666
+      
+Минимальный путь!
+Количество шагов: 14
+Шаги: right->down->down->down->right->down->down->right->down->down->down->down->right->right.
