@@ -39,9 +39,9 @@ int *insert (int num, int *arr)
     }
     // точка вставки найдена; вставить temp
     sort[j] = temp;
-	//cout << i << "-ый шаг" << endl;
-	//print(num,sort);
-	//cout<<endl;
+	cout << i << "-ый шаг" << endl;
+	print(num,sort);
+	cout<<endl;
   }
 	return sort;
 }
@@ -81,22 +81,50 @@ int *binary_insert(int num, int *arr)
 
         sort[b] = temp;
         i++;
-	//	cout << i-1 << "-ый шаг" << endl;
-		//print(num,sort);
-		//cout<<endl;
+		cout << i-1 << "-ый шаг" << endl;
+		print(num,sort);
+		cout<<endl;
     } while (i < num);
 return sort;
 }
 int main ()
 {
 	setlocale (0,"");
-	int size;
-	cin >> size;
+	int size,d;
+	cout <<"Введите размер массива \n";
+    cin>>size;
 	int* mass = new int [size];
 	int* res = new int [size];
-    res = get(size,mass);
+	
+	
+	cout<<"\n----------Меню-----------\n";
+    cout<<" 1)Генерация случайного массива\n";
+    cout<<" 2)Ввод массива пользователем";
+    do
+       {
+          cout<<"\n Введите d (1 или 2)\n";
+          cin>>d;
+          if(d<1||d>2)
+              cout<<"\n Ошибка! Повторите попытку! \n";
+        }
+     while(d<1||d>2);
+     switch(d)
+	 {
+	   case 1:
+		   {
+	        res = get(size,mass);
+		   }break;
+	   case 2:
+		   {
+	        cout<<"Введите массив чисел.\n";
+			for (int i = 0; i < size; i++)
+			{
+		       cin>>mass[i];
+			}
+		   }
+	 }
 	cout <<"Исходный массив" << endl;
-	//print(size,mass);
+	print(size,mass);
 	int low = mass[0];
 	int high = mass[size];
 	cout << low << high <<endl;
@@ -109,7 +137,7 @@ int main ()
 	cout << (double)t/CLOCKS_PER_SEC << endl;
 	cout<<endl;
 	cout <<"Отсортированный массив обычными вставками" << endl;
-	//print(size,res);
+	print(size,res);
 	cout<<endl;
 	cout<<"-------------------------------------------"<< endl;
 
@@ -121,7 +149,8 @@ int main ()
 	cout << (double)t1/CLOCKS_PER_SEC << endl;
 	cout<<endl;
 	cout <<"Отсортированный массив двоичными вставками" << endl;
-	//print(size,res);
+	print(size,res);
 	delete [] mass;
+	delete []res;
 	getch();
 }
