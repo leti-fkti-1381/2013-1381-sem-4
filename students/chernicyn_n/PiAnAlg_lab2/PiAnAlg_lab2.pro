@@ -1,19 +1,20 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2013-02-23T15:43:58
+# Project created by QtCreator 2013-05-26T17:19:15
 #
 #-------------------------------------------------
 
+QT       += core
 
-TARGET = PiAnAlg_lab1
+QT       -= gui
+
+TARGET = PiAnAlg_lab2
 CONFIG   += console
 CONFIG   -= app_bundle
+
 TEMPLATE = app
 
 
-SOURCES += main.cpp \
-    hashtable.cpp
+SOURCES += main.cpp
 
-HEADERS += \
-    hashtable.h \
-    list.h
+HEADERS +=
